@@ -2,18 +2,13 @@ using UnityEngine;
 
 public class CoinBlock : MonoBehaviour
 {
-    private void Update()
+    private void OnTriggerEnter(Collider other)
     {
-        if (Input.GetMouseButtonDown(0))
+        if (other.gameObject.CompareTag("Mario"))
         {
-            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-            RaycastHit hit;
-
-            if (Physics.Raycast(ray, out hit) && hit.collider.gameObject == gameObject)
-            {
-                CountMoney.Instance.AddCoin();
-                Destroy(gameObject);
-            }
+            CountMoney.Instance.AddCoin();
+            CountMoney.Instance.AddPoints();
+            Destroy(gameObject);
         }
     }
 }

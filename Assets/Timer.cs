@@ -3,9 +3,11 @@ using TMPro;
 
 public class Timer : MonoBehaviour
 {
-    public float totalTime = 360f;
+    public float totalTime = 100f;
     private float currentTime;
     public TMP_Text timerText;
+    public GameObject timesOutUI;
+    public string canvasTag = "Canvas";
 
     void Start()
     {
@@ -19,6 +21,15 @@ public class Timer : MonoBehaviour
         if (currentTime <= 0)
         {
             currentTime = 0;
+            GameObject canvas = GameObject.FindGameObjectWithTag(canvasTag);
+            if (canvas != null)
+            {
+                GameObject menuInstance = Instantiate(timesOutUI, canvas.transform);
+            }
+            else
+            {
+                Debug.LogError("Canvas object not found in the scene!");
+            }
         }
 
         timerText.text = Mathf.FloorToInt(currentTime).ToString();

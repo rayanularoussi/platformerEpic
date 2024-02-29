@@ -2,8 +2,8 @@ using UnityEngine;
 
 public class MaterialOffset : MonoBehaviour
 {
-    public float cooldownTime = 0.1f; // Cooldown time between offset changes
-    private float cooldownTimer = 0f; // Timer to track cooldown
+    public float cooldownTime = 0.1f; 
+    private float cooldownTimer = 0f;
     private Renderer renderer;
 
     void Start()
